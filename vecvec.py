@@ -1,5 +1,26 @@
 import numpy as np
 
+# is_vector(x) check whether an array is a vector or not 
+def is_vector(arr):
+    """Check if arr is a vector."""
+    
+    if arr.ndim == 1:
+        return True
+    
+    # Higher dimension case
+    elif arr.ndim > 1:
+      
+        # Shape (1, n) is a vector 
+        if arr.shape[0] == 1:
+            return True
+        
+        # Otherwise check if all dims except first are size 1
+        else: 
+            return all(size == 1 for size in arr.shape[1:])
+        
+    else:
+        return False
+
 # y = copy (x,y) copies vector x into vector y
 # Vector x and y can be a mixture of column and/or row vector. 
 # In other words, x and y can be n x 1 or 1 x n arrays. 
@@ -10,16 +31,15 @@ import numpy as np
 
 # And then also indicates whether x must be transposed (e.g. if x is arow vector and y is a column vector).
 
-
 def copy(x, y):
     m_x, n_x = x.shape
     m_y, n_y = y.shape
 
-    if not (x.ndim == 1 and y.ndim == 1):
-        return 'Failed 1'
+    if not (is_vector(x) and is_vector(y)):
+        return 'Failed. x and y should be a vector'
 
     if not (m_x * n_x == m_y * n_y):
-        return 'Failed 2'
+        return 'Failed. x dimension is not proportionate to y dimension'
 
     if n_x == 1:  # x is a column
         if n_y == 1:  # y is a column
