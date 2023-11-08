@@ -15,13 +15,11 @@ def copy(x, y):
     m_x, n_x = x.shape
     m_y, n_y = y.shape
 
-    if not (np.ndim(x) == 1 and np.ndim(y) == 1):
-        print('copy failed')
-        return 'FAILED'
+    if not (x.ndim == 1 and y.ndim == 1):
+        return 'Failed 1'
 
     if not (m_x * n_x == m_y * n_y):
-        print('copy failed')
-        return 'FAILED'
+        return 'Failed 2'
 
     if n_x == 1:  # x is a column
         if n_y == 1:  # y is a column
