@@ -16,9 +16,16 @@ check1 = laff.copy(x,y)  # Use a different variable 'z' for the copied values
 x = np.array([[1, 2, 3]]) 
 y = np.array([[0, -1, -2]])
 z = np.array([[4, 3, 2, 1]])
-m_x, n_x = x.shape
-m_y, n_y = y.shape
-print(m_x)
-print(n_x)
-print(m_y)
-print(n_y)
+
+# Example usage:
+alpha = 2  # Scalar alpha (not an array)
+x = np.array([[1, 2, 3]])  # Row vector x
+
+# Using direct multiplication creates a new array
+result_direct = alpha * x
+
+# Using laff.scal modifies the array in-place
+result_laff = laff.scal(alpha, x)
+
+check = np.array_equal(result_direct, result_laff)
+print(check)
