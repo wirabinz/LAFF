@@ -1,7 +1,7 @@
 import numpy as np
 import vecvec as laff
 
-alpha = -2  # Scalar alpha (not an array)
+alpha = np.array(-2)  # Scalar alpha (not an array)
 x = np.array([[1, 2, 3]])  # Row vector x
 
 

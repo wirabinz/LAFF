@@ -98,3 +98,22 @@ def scal(alpha, x):
         return 'Failed. x is not a vector'
 
     return x
+
+# y_out = laff_axpy( alpha, x, y ) computes y_out = alpha * x + y.
+#   Vectors x and y can be a mixture of column and/or row vector.  In other
+#   words, x and y can be n x 1 or 1 x n arrays.  However, one size must 
+#   equal 1 and the other size equal n.  
+# 
+#   The reason y is an input parameter is that the input y indicates 
+#   whether the output, y_out, is a column or row vector.
+# For convenience, we treat each vector as a m x n matrix where either m 
+# or n equals 1, making it a row or column vector.
+# Extract the row and column sizes of alpha, x, and y
+
+#  For convenience, we treat each vector as a m x n matrix where either m 
+#  or n equals 1, making it a row or column vector.
+
+def axpy(alpha, x,y):
+    # Check if alpha is a scalar
+    if not(is_scalar(alpha)):
+        return 'Failed. Alpha is not a scalar.'
